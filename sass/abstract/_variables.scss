@@ -1,0 +1,36 @@
+:root {
+
+    // Tipografía
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    // Breakpoints / layout
+    --desktop-width: 1440px;
+    --desktop-max-width-lg: 670px;
+
+    // Colores base
+    --color-info: #0d6efd; // color primario del proyecto
+    --color-background: #ffffff; // fondo general
+    --color-text: #212529; // logo, títulos, texto principal
+    --color-text-light: #6c757d; // texto secundario
+    --color-text-strong: #000000; // texto negrita
+    --color-separator: #eff0f2; // separadores
+
+    // Cards
+    --color-card-bg: #f8f8f8; // fondo de cada card
+    --color-card-text: var(--color-text);
+    --color-card-border: #d8d8d8;
+    --color-card-selected: var(--color-info); // cabecera y borde de card seleccionada
+    --color-card-button-bg: var(--color-info); // botón full
+    --color-card-button-outline: transparent;
+    --color-card-button-text: #ffffff;
+
+    // Botones
+    --color-button-bg: var(--color-info); // primary button
+    --color-button-text: #ffffff;
+    --color-button-bg-hover: darken(--color-button-bg, 10%);
+
+    // Otros estados
+    --color-positive: #22c55e;
+    --color-negative: #d32f2f;
+    --color-warning: #ff7b1c;
+}

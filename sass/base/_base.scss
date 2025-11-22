@@ -1,0 +1,43 @@
+html {
+    font-size: calc(100vw / var(--desktop-width) * 6);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100svh;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-style: normal;
+    text-size-adjust: 100%;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fff;
+}
+
+
+p {
+    margin-bottom: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.subtitle {
+    color: var(--color-text-light);
+    font-size: 15px;
+}

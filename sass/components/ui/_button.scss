@@ -1,0 +1,18 @@
+.button {
+    border: none;
+    background: transparent;
+    padding: .7rem 1rem;
+    border-radius: .3rem;
+    cursor: pointer;
+
+    &.solid {
+        background-color: var(--color-card-button-bg);
+        color: var(--color-card-button-text);
+    }
+
+    &.outline {
+        background-color: transparent;
+        color: var(--color-card-button-bg);
+        border: 1px solid var(--color-card-button-bg);
+    }
+}

@@ -1,0 +1,20 @@
+.bottom-separator {
+    border-bottom: 1px solid var(--color-separator);
+}
+
+.top-separator {
+    border-top: 1px solid var(--color-separator);
+}
+
+.max-w-lg {
+    max-width: var(--desktop-max-width-lg);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}

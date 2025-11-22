@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+a {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: inherit;
+}
+
+ul,
+ol,
+li{
+    list-style: none;
+}
+
+ul, 
+ol {
+    margin-left: 1em;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+}
+
+a:not([class]){
+    text-decoration-skip-ink: auto;
+}

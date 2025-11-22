@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0.9rem;
+
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: 0.8rem;
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: medium;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.7rem;
+        }
+    }
+
+}

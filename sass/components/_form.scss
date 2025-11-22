@@ -1,0 +1,37 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 550px;
+    padding: 3rem;
+    align-items: center;
+    border: 1px solid var(--color-card-border);
+    border-radius: .5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    input,
+    textarea {
+        border: none;
+        border-radius: .2rem;
+        background-color: var(--color-separator);
+        width: 15rem;
+        padding: .5rem .6rem;
+    }
+
+    input {
+        height: 2rem;
+    }
+
+    textarea {
+        height: 7rem;
+    }
+
+    .textarea-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
+        font-size: small;
+        color: var(--color-text-light);
+    }
+}
