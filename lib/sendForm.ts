@@ -3,11 +3,10 @@
 import { redirect } from "next/navigation";
 
 export async function sendFormData(formData: object) {
-    const URL1 = process.env.BACKEND_URL || 'https://www.mifurmulario.com/recibo_post';
-    const URL2 = 'http://localhost:8882/wp-json/contact-form/v1/submit';
+    const URL = process.env.BACKEND_URL || 'https://www.mifurmulario.com/recibo_post';
 
     try {
-        const response = await fetch(URL1, {
+        const response = await fetch(URL, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
