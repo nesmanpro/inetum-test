@@ -1,17 +1,18 @@
 "use client";
 
 // react
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
 
 // components
 import Header from "@/components/layouts/Header";
 import Button from "@/components/ui/Button";
+import FormError from "@/components/layouts/FormError";
 
 // actions
 import { actions } from "@/actions";
+
+// types
 import { type FormState } from "@/helper/validation";
-import FormError from "@/components/layouts/FormError";
-import { useRouter } from "next/navigation";
 
 const INITIAL_STATE: FormState = {
   success: false,
@@ -31,15 +32,9 @@ export default function page() {
     actions.auth.registerClientActions,
     INITIAL_STATE
   );
-  const router = useRouter();
+
   const [message, setMessage] = useState("");
   const maxChars = 160;
-
-  useEffect(() => {
-    if (formState.serverError) {
-      router.push("/serverError");
-    }
-  }, [formState.serverError]);
 
   return (
     <div className="form-page max-w-lg">

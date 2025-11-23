@@ -11,4 +11,32 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    @media (max-width: 480px) {
+        max-width: 350px;
+    }
+}
+
+.success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: palevioletred;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    @media (max-width: 480px) {
+        max-width: 350px;
+    }
 }

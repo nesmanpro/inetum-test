@@ -1,10 +1,13 @@
 'use server'
 
+import { redirect } from "next/navigation";
+
 export async function sendFormData(formData: object) {
-    const URL = process.env.BACKEND_URL || 'https://www.mifurmulario.com/recibo_post';
+    const URL1 = process.env.BACKEND_URL || 'https://www.mifurmulario.com/recibo_post';
+    const URL2 = 'http://localhost:8882/wp-json/contact-form/v1/submit';
 
     try {
-        const response = await fetch(URL, {
+        const response = await fetch(URL1, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -17,7 +20,7 @@ export async function sendFormData(formData: object) {
         return data
     } catch (error) {
         console.error('Error enviando formulario:', error)
-        throw error
+        redirect('/serverError')
     }
 
 }

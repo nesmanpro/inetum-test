@@ -2,6 +2,7 @@
 
 import { FormSchema, type FormState } from "@/helper/validation";
 import { sendFormData } from "@/lib/sendForm";
+import { redirect } from "next/navigation";
 import z from "zod";
 
 export async function registerClientActions(
@@ -31,36 +32,16 @@ export async function registerClientActions(
         }
     }
 
-    try {
+    const response = await sendFormData(validatedFields.data);
 
-        const response = await sendFormData(validatedFields.data);
-
-        if (!response || !response.error) {
-            return {
-                success: false,
-                message: 'Error al enviar el formulario.',
-                errors: response.error,
-                data: fields,
-            }
-        }
-
-        return {
-            success: true,
-            message: 'Formulario enviado correctamente.',
-            errors: null,
-            data: fields,
-        }
-
-    } catch (err) {
-        console.error("Error del servidor al hacer el fetch.", err);
-
+    if (!response || response.error) {
         return {
             success: false,
-            message: "No se pudo enviar el formulario. Intenta más tarde.",
-            errors: null,
+            message: 'Error al enviar el formulario.',
+            errors: response.error,
             data: fields,
-            serverError: err
-        };
+        }
     }
 
+    redirect('/success')
 }
