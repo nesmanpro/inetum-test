@@ -12,6 +12,11 @@
     overflow: hidden;
     cursor: pointer;
 
+
+    @media (max-width: 480px) {
+        max-width: 230px;
+    }
+
     &-header {
         text-align: center;
         width: 100%;

@@ -45,6 +45,7 @@ export default function page() {
     <div className="form-page max-w-lg">
       <Header title="Formulario" />
       <form className="form-wrapper" action={formAction}>
+        <h1>Rellena este formulario</h1>
         <div className="">
           <input
             type="text"
