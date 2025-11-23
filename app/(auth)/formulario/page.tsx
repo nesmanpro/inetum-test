@@ -1,38 +1,58 @@
 "use client";
+
+// react
+import { useActionState, useEffect, useState } from "react";
+
+// components
 import Header from "@/components/layouts/Header";
 import Button from "@/components/ui/Button";
-import { useFetch } from "@/hooks/useFetch";
-import { useState } from "react";
 
-type Props = {};
+// actions
+import { actions } from "@/actions";
+import { type FormState } from "@/helper/validation";
+import FormError from "@/components/layouts/FormError";
+import { useRouter } from "next/navigation";
 
-export default function page({}: Props) {
+const INITIAL_STATE: FormState = {
+  success: false,
+  message: undefined,
+  errors: null,
+  data: {
+    name: "",
+    secondname: "",
+    email: "",
+    phone: "",
+    message: "",
+  },
+};
+
+export default function page() {
+  const [formState, formAction] = useActionState(
+    actions.auth.registerClientActions,
+    INITIAL_STATE
+  );
+  const router = useRouter();
   const [message, setMessage] = useState("");
   const maxChars = 160;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-
-    const payload = {
-      nombre: formData.get("nombre"),
-      apellidos: formData.get("apellidos"),
-      email: formData.get("email"),
-      telefono: formData.get("telefono"),
-      mensaje: formData.get("mensaje"),
-    };
-
-    console.log("Datos enviados:", payload);
-    const { loading, error, data, response } = useFetch();
-  };
+  useEffect(() => {
+    if (formState.serverError) {
+      router.push("/serverError");
+    }
+  }, [formState.serverError]);
 
   return (
     <div className="form-page max-w-lg">
       <Header title="Formulario" />
-      <form className="form-wrapper" onSubmit={handleSubmit}>
+      <form className="form-wrapper" action={formAction}>
         <div className="">
-          <input type="text" name="name" placeholder="Nombre" required />
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            defaultValue={formState.data?.name ?? ""}
+          />
+          <FormError error={formState.errors?.name} />
         </div>
 
         <div className="mb-3">
@@ -40,8 +60,9 @@ export default function page({}: Props) {
             type="text"
             name="secondname"
             placeholder="Apellidos"
-            required
+            defaultValue={formState.data?.secondname ?? ""}
           />
+          <FormError error={formState.errors?.secondname} />
         </div>
 
         <div className="mb-3">
@@ -50,8 +71,9 @@ export default function page({}: Props) {
             name="email"
             className=""
             placeholder="Email"
-            required
+            defaultValue={formState.data?.email ?? ""}
           />
+          <FormError error={formState.errors?.email} />
         </div>
 
         <div className="mb-3">
@@ -59,12 +81,9 @@ export default function page({}: Props) {
             type="tel"
             name="phone"
             placeholder="Telefono"
-            pattern="^[6-7]\d{8}$"
-            required
+            defaultValue={formState.data?.phone ?? ""}
           />
-          {/* <div className="form-text">
-            Debe ser un número móvil de España (9 dígitos, empieza en 6 o 7).
-          </div> */}
+          <FormError error={formState.errors?.phone} />
         </div>
 
         <div className="textarea-wrapper">
@@ -72,7 +91,6 @@ export default function page({}: Props) {
             name="message"
             className="form-control"
             placeholder="Escribe tu mensaje..."
-            required
             maxLength={maxChars}
             rows={4}
             value={message}
@@ -81,11 +99,10 @@ export default function page({}: Props) {
           <small className="text-muted">
             {maxChars - message.length} caracteres restantes
           </small>
+          <FormError error={formState.errors?.message} />
         </div>
 
-        <Button type="submit" className="solid">
-          Enviar formulario
-        </Button>
+        <Button className="solid">Enviar formulario</Button>
       </form>
     </div>
   );

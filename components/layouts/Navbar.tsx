@@ -18,7 +18,9 @@ export default function Navbar() {
     <div className="navbar">
       <div className="navbar-wrapper bottom-separator max-w-lg">
         <div className="navbar-logo">
-          <Boostrap />
+          <Link href="/">
+            <Boostrap />
+          </Link>
           <span>Ejemplo de precios</span>
         </div>
         <div className="navbar-menu">

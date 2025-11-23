@@ -1,5 +1,5 @@
 import Header from "@/components/layouts/Header";
-import Table from "@/components/Table";
+import Table from "@/components/layouts/Table";
 import Card from "@/components/ui/Card";
 import { cardsType, headerType, tableType } from "@/types/homeTypes";
 
